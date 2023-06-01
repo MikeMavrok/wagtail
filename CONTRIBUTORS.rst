@@ -709,6 +709,10 @@ Contributors
 * Swojak-A
 * fidoriel
 * Ramon Wenger
+* Christer Jensen
+* Virag Jain
+* Lukas von Allmen
+* Ester Beltrami
 
 Translators
 ===========

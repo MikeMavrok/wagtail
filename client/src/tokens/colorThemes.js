@@ -17,7 +17,7 @@
 // The focus outline color is defined without reusing a named color variable
 // because it shouldn’t be reused for anything else in the UI.
 const focusToken = {
-  value: '#009072',
+  value: '#00A885',
   bgUtility: 'w-bg-focus',
   textUtility: 'w-text-focus',
   cssVariable: '--w-color-focus',
@@ -223,6 +223,12 @@ const light = [
         bgUtility: 'w-bg-text-highlight',
         textUtility: 'w-text-text-highlight',
         cssVariable: '--w-color-text-highlight',
+      },
+      'text-error': {
+        value: 'var(--w-color-critical-200)',
+        bgUtility: 'w-bg-text-error',
+        textUtility: 'w-text-text-error',
+        cssVariable: '--w-color-text-error',
       },
     },
   },
@@ -552,6 +558,12 @@ const dark = [
         bgUtility: 'w-bg-text-highlight',
         textUtility: 'w-text-text-highlight',
         cssVariable: '--w-color-text-highlight',
+      },
+      'text-error': {
+        value: 'var(--w-color-critical-100)',
+        bgUtility: 'w-bg-text-error',
+        textUtility: 'w-text-text-error',
+        cssVariable: '--w-color-text-error',
       },
     },
   },

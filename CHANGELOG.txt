@@ -8,9 +8,33 @@ Changelog
  * Mark calls to `md5` as not being used for secure purposes, to avoid flagging on FIPS-mode systems (Sean Kelly)
  * Return filters from `parse_query_string` as a `QueryDict` to support multiple values (Aman Pandey)
  * Fix: Prevent choosers from failing when initial value is an unrecognised ID, e.g. when moving a page from a location where `parent_page_types` would disallow it (Dan Braghis)
+ * Fix: Move comment notifications toggle to the comments side panel (Sage Abdullah)
+ * Fix: Remove comment button on InlinePanel fields (Sage Abdullah)
+ * Fix: Fix missing link to `UsageView` from `EditView` for snippets (Christer Jensen)
+ * Fix: Prevent lowercase conversions of IndexView column headers (Virag Jain)
  * Docs: Document how to add non-ModelAdmin views to a `ModelAdminGroup` (Onno Timmerman)
  * Docs: Document how to add StructBlock data to a StreamField (Ramon Wenger)
+ * Docs: Update ReadTheDocs settings to v2 to resolve urllib3 issue in linkcheck extension (Thibaud Colas)
+ * Docs: Update documentation for `log_action` parameter on `RevisionMixin.save_revision` (Christer Jensen)
+ * Docs: Reorganise snippets documentation to cover customisations and optional features (Sage Abdullah)
  * Maintenance: Switch to ruff for flake8 / isort code checking (Oliver Parker)
+ * Maintenance: Deprecate `insert_editor_css` in favour of `insert_global_admin_css` (Ester Beltrami)
+
+
+5.0.1 (25.05.2023)
+~~~~~~~~~~~~~~~~~~
+
+ * Fix: Rectify previous fix for TableBlock becoming uneditable after save (Sage Abdullah)
+ * Fix: Ensure that copying page correctly picks up the latest revision (Matt Westcott)
+ * Fix: Ensure comment buttons always respect `WAGTAILADMIN_COMMENTS_ENABLED` (Thibaud Colas)
+ * Fix: Fix error when deleting a single snippet through the bulk actions interface (Sage Abdullah)
+ * Fix: Pass the correct `for_update` value for `get_form_class` in `SnippetViewSet` edit views (Sage Abdullah)
+ * Fix: Move comment notifications toggle to the comments side panel (Sage Abdullah)
+ * Fix: Remove comment button on InlinePanel fields (Sage Abdullah)
+ * Fix: Fix missing link to `UsageView` from `EditView` for snippets (Christer Jensen)
+ * Fix: Prevent lowercase conversions of IndexView column headers (Virag Jain)
+ * Fix: Fix various colour issues in dark mode (Thibaud Colas)
+ * Docs: Update documentation for `log_action` parameter on `RevisionMixin.save_revision` (Christer Jensen)
 
 
 5.0 (02.05.2023)
@@ -152,6 +176,16 @@ Changelog
  * Maintenance: Migrate the site settings switcher select from jQuery to a refined version of the `w-action` controller usage (Aadi jindal, LB (Ben) Johnston)
  * Maintenance: Always use expanded Sass output so CSS processing is identical in development and production builds (Thibaud Colas)
  * Maintenance: Refactor admin color palette to semantic, theme-agnostic design tokens (Thibaud Colas)
+
+
+4.2.4 (25.05.2023)
+~~~~~~~~~~~~~~~~~~
+
+ * Fix: Rectify previous fix for TableBlock becoming uneditable after save (Sage Abdullah)
+ * Fix: Ensure that copying page correctly picks up the latest revision (Matt Westcott)
+ * Fix: Adjust collection field alignment in multi-upload forms (LB (Ben) Johnston)
+ * Fix: Prevent lowercase conversions of IndexView column headers (Virag Jain)
+ * Docs: Update documentation for `log_action` parameter on `RevisionMixin.save_revision` (Christer Jensen)
 
 
 4.2.3 (02.05.2023)
@@ -348,6 +382,15 @@ Changelog
  * Maintenance: Migrate privacy switch, FileFields, history buttons, error messages, Datetimepicker, ordering icons, thumbnails, ModelAdmin, page listings, workflows, and user creation form controls to SVG icons (Thibaud Colas)
  * Maintenance: Switch form submission listings to use the same ordering icons as other listings (Thibaud Colas)
 
+
+4.1.6 (25.05.2023)
+~~~~~~~~~~~~~~~~~~
+
+ * Fix: Rectify previous fix for TableBlock becoming uneditable after save (Sage Abdullah)
+ * Fix: Ensure that copying page correctly picks up the latest revision (Matt Westcott)
+ * Fix: Adjust collection field alignment in multi-upload forms (LB (Ben) Johnston)
+ * Fix: Prevent lowercase conversions of IndexView column headers (Virag Jain)
+ * Docs: Update documentation for `log_action` parameter on `RevisionMixin.save_revision` (Christer Jensen)
 
 4.1.5 (02.05.2023)
 ~~~~~~~~~~~~~~~~~~
@@ -617,7 +660,7 @@ Changelog
  * Remove legacy (non-next) breadcrumbs no longer used, remove `ModelAdmin` usage of breadcrumbs completely (Paarth Agarwal)
  * Replace human-readable-date hover pattern with accessible tooltip variant across all of admin (Bernd de Ridder)
  * Added `WAGTAILADMIN_USER_PASSWORD_RESET_FORM` setting for overriding the admin password reset form (Michael Karamuth)
- * Prefetch workflow states in edit page view to to avoid queries in other parts of the view/templates that need it (Tidiane Dia)
+ * Prefetch workflow states in edit page view to avoid queries in other parts of the view/templates that need it (Tidiane Dia)
  * Remove the edit link from edit bird in previews to avoid confusion (Sævar Öfjörð Magnússon)
  * Introduce new template fragment and block level enclosure tags for easier template composition (Thibaud Colas)
  * Add a `classnames` template tag to easily build up classes from variables provided to a template (Paarth Agarwal)
@@ -2107,7 +2150,7 @@ Changelog
  * Added hooks `before_create_user`, `after_create_user`, `before_delete_user`, `after_delete_user`, `before_edit_user`, `after_edit_user` (Jon Carmack)
  * Added `exclude_fields_in_copy` property to Page to define fields that should not be included on page copy (LB (Ben Johnston))
  * Improved error message on incorrect `{% image %}` tag syntax (LB (Ben Johnston))
- * Optimized preview data storage (Bertrand Bordage)
+ * Optimised preview data storage (Bertrand Bordage)
  * Added `render_landing_page` method to `AbstractForm` to be easily overridden and pass `form_submission` to landing page context (Stein Strindhaug)
  * Added `heading` kwarg to `InlinePanel` to allow heading to be set independently of button label (Adrian Turjak)
  * The value type returned from a `StructBlock` can now be customised (LB (Ben Johnston))
@@ -2366,7 +2409,7 @@ Changelog
  * Added `form_fields_exclude` property to ModelAdmin views (Matheus Bratfisch)
  * User creation / edit form now enforces password validators set in `AUTH_PASSWORD_VALIDATORS` (Bertrand Bordage)
  * Added support for showing `non_field_errors` when validation fails in the page editor (Matt Westcott)
- * Added `WAGTAILADMIN_RECENT_EDITS_LIMIT` setting to to define the number of your most recent edits on the dashboard (Maarten Kling)
+ * Added `WAGTAILADMIN_RECENT_EDITS_LIMIT` setting to define the number of your most recent edits on the dashboard (Maarten Kling)
  * Creating / editing users through the Wagtail admin no longer modifies the `is_staff` flag (Matt Westcott)
  * Added link to the full Elasticsearch setup documentation from the Performance page (Matt Westcott)
  * Tag input fields now accept spaces in tags by default, and can be overridden with the `TAG_SPACES_ALLOWED` setting (Kees Hink, Alex Gleason)

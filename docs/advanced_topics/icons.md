@@ -10,6 +10,7 @@ Elements that use icons are:
 -   [Client-side components](extending_clientside_components)
 -   [Rich text editor toolbar buttons](extending_the_draftail_editor)
 -   [ModelAdmin menu](modeladmin_menu_icon)
+-   [Snippets](wagtailsnippets_icon)
 -   [StreamField blocks](custom_streamfield_blocks)
 
 This document describes how to choose, add and customise icons.
@@ -76,6 +77,7 @@ Wagtail icons live in `wagtail/admin/templates/wagtailadmin/icons/`.
 Place your own SVG files in `<your_app>/templates/wagtailadmin/icons/`.
 
 (available_icons)=
+
 ## Available icons
 
 Enable the [styleguide](styleguide) to view the available icons and their names for any given project.
@@ -87,6 +89,7 @@ Here are all available icons out of the box:
 <summary>Toggle icons table</summary>
 
 ```{include} ../_static/wagtail_icons_table.txt
+
 ```
 
 </details>

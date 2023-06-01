@@ -155,7 +155,9 @@ window.comments = (() => {
 
     register() {
       if (!this.contentpath) {
-        // The widget has no valid contentpath, skip subscriptions
+        // The widget has no valid contentpath,
+        // remove the button and skip subscriptions
+        this.commentAdditionNode.remove();
         return undefined;
       }
       const initialState = commentApp.store.getState();
@@ -289,10 +291,15 @@ window.comments = (() => {
     }
 
     // Show comments app
-    const commentNotifications = formElement.querySelector(
+    const commentNotifications = document.querySelector(
       '[data-comment-notifications]',
     );
     commentNotifications.hidden = false;
+    // Attach the comment notifications input to the form using the form attribute
+    // because the input element is outside the form.
+    const notificationsInput = commentNotifications.querySelector('input');
+    notificationsInput.setAttribute('form', formElement.id);
+
     const tabContentElement = formElement.querySelector('.tab-content');
     tabContentElement.classList.add('tab-content--comments-enabled');
 

@@ -1,3 +1,4 @@
+from django import forms
 from django.http import HttpResponse
 from django.utils.safestring import mark_safe
 
@@ -33,7 +34,7 @@ from .forms import FavouriteColourForm
 
 
 # Register one hook using decorators...
-@hooks.register("insert_editor_css")
+@hooks.register("insert_global_admin_css")
 def editor_css():
     return """<link rel="stylesheet" href="/path/to/my/custom.css">"""
 
@@ -314,6 +315,12 @@ class DraftStateModelViewSet(SnippetViewSet):
         FieldPanel("text"),
         PublishingPanel(),
     ]
+
+    def get_form_class(self, for_update=False):
+        form_class = super().get_form_class(for_update)
+        if for_update:
+            form_class.base_fields["text"].widget = forms.TextInput()
+        return form_class
 
 
 class ModeratedModelViewSet(SnippetViewSet):

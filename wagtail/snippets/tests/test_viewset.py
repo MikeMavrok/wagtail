@@ -652,8 +652,8 @@ class TestListViewWithCustomColumns(BaseSnippetViewSetTests):
     def test_custom_columns(self):
         response = self.get()
         self.assertContains(response, "Text")
-        self.assertContains(response, "Country Code")
-        self.assertContains(response, "Custom Foo Column")
+        self.assertContains(response, "Country code")
+        self.assertContains(response, "Custom FOO column")
         self.assertContains(response, "Updated")
 
         self.assertContains(response, "Foo UK")
@@ -959,3 +959,20 @@ class TestMenuItemRegistration(BaseSnippetViewSetTests):
             menu_items = admin_menu.render_component(self.request)
             snippets = [item for item in menu_items if item.name == "snippets"]
             self.assertEqual(len(snippets), 0)
+
+
+class TestCustomFormClass(BaseSnippetViewSetTests):
+    model = DraftStateModel
+
+    def test_get_form_class(self):
+        add_view = self.client.get(self.get_url("add"))
+        self.assertNotContains(add_view, '<input type="text" name="text"')
+        self.assertContains(add_view, '<textarea name="text"')
+
+        obj = self.model.objects.create(text="Hello World")
+
+        # The get_form_class has been overridden to replace the widget for the
+        # text field with a TextInput, but only for the edit view
+        edit_view = self.client.get(self.get_url("edit", args=(quote(obj.pk),)))
+        self.assertContains(edit_view, '<input type="text" name="text"')
+        self.assertNotContains(edit_view, '<textarea name="text"')
